@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h3>Day #<%= @day.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-hover">
+      <tr class="warning">
+        <th>Activity Time</th>
+        <th>What you'll do</th>
+        <th>What you see is what you get</th>
+        <th>Where it is</th>
+      </tr>
+
+
+  <% @day.acts.each do |act| %>
+
+  <tr class="active">
+    <td><%= act.time %></td>
+    <td><%= act.do %></td>
+    <td><img src="<%= act.see %>" width="150"></td>
+    <td><%= act.where %></td>
+  </tr>
+  <% end %>
+
+  <tr class="active">
+    <td colspan="4">
+      <h3>Add a new activity</h3>
+          <form action="/create_act" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @act.time %>">
+      </div>
+
+      <!-- Label and input for do -->
+      <div class="form-group">
+        <label for="do" class="control-label">
+          What you'll do
+        </label>
+
+        <textarea id="do" name="do" placeholder="Description of activities" class="form-control" rows="3"><%= @act.do %></textarea>
+      </div>
+
+      <!-- Label and input for see -->
+      <div class="form-group">
+        <label for="see" class="control-label">
+          What you see is what you get
+        </label>
+
+        <input type="text" id="see" name="see" placeholder="Image of activities" class="form-control" value="<%= @act.see %>">
+      </div>
+
+      <!-- Label and input for where -->
+      <div class="form-group">
+        <label for="where" class="control-label">
+          Where it is
+        </label>
+
+        <input type="text" id="where" name="where" placeholder="Address" class="form-control" value="<%= @act.where %>">
+      </div>
+
+      <!-- Label and input for day_id -->
+      <div class="form-group">
+
+        <input type="hidden" name="day_id" value="<%= @day.id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Act
+      </button>
+      or
+      <a href="/days">Cancel</a>
+    </form>
+  </td>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Days
+    <a href="/days/new" class="btn btn-lg btn-success">New Day</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Title</th>
+        <th>Image Preview</th>
+        <th>Description</th>
+        <th>City</th>
+        <th>Tour Guide</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @days.each do |day| %>
+      <tr>
+        <td><%= day.title %></td>
+        <td><img src="<%= day.image_url %>" width="150"</td>
+        <td><%= day.description %></td>
+        <td><%= day.city %></td>
+        <td><%= day.guide.name %></td>
+        <td>
+          <a href="/days/<%= day.id %>" class="btn btn-primary">Show</a>
+          <a href="/days/<%= day.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_day/<%= day.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

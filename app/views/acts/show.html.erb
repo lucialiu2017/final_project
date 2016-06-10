@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Act #<%= @act.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Time</dt>
+      <dd><%= @act.time %></dd>
+
+      <dt>Do</dt>
+      <dd><%= @act.do %></dd>
+
+      <dt>See</dt>
+      <dd><%= @act.see %></dd>
+
+      <dt>Where</dt>
+      <dd><%= @act.where %></dd>
+
+      <dt>Day</dt>
+      <dd><%= @act.day_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/acts" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/acts/<%= @act.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_act/<%= @act.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

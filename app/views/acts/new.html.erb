@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @act.errors.any? %>
+  <% @act.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Act</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_act" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @act.time %>">
+      </div>
+
+      <!-- Label and input for do -->
+      <div class="form-group">
+        <label for="do" class="control-label">
+          Do
+        </label>
+
+        <textarea id="do" name="do" placeholder="Do" class="form-control" rows="3"><%= @act.do %></textarea>
+      </div>
+
+      <!-- Label and input for see -->
+      <div class="form-group">
+        <label for="see" class="control-label">
+          See
+        </label>
+
+        <input type="text" id="see" name="see" placeholder="See" class="form-control" value="<%= @act.see %>">
+      </div>
+
+      <!-- Label and input for where -->
+      <div class="form-group">
+        <label for="where" class="control-label">
+          Where
+        </label>
+
+        <input type="text" id="where" name="where" placeholder="Where" class="form-control" value="<%= @act.where %>">
+      </div>
+
+      <!-- Label and input for day_id -->
+      <div class="form-group">
+        <label for="day_id" class="control-label">
+          Day
+        </label>
+
+        <input type="text" id="day_id" name="day_id" placeholder="Day" class="form-control" value="<%= @act.day_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Act
+      </button>
+      or
+      <a href="/days/<%= @act.day_id %>">Cancel</a>
+    </form>
+  </div>
+</div>

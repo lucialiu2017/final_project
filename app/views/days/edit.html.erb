@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @day.errors.any? %>
+  <% @day.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Day #<%= @day.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_day/<%= @day.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @day.title %>">
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @day.image_url %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @day.description %></textarea>
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @day.city %>">
+      </div>
+
+      <!-- Label and input for guide_id -->
+      <div class="form-group">
+        <label for="guide_id" class="control-label">
+          Guide
+        </label>
+
+        <input type="text" id="guide_id" name="guide_id" placeholder="Guide" class="form-control" value="<%= @day.guide_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Day
+      </button>
+      or
+      <a href="/days/<%= @day.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

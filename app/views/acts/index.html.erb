@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Acts
+    <a href="/acts/new" class="btn btn-lg btn-success">New Act</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Time</th>
+        <th>Do</th>
+        <th>See</th>
+        <th>Where</th>
+        <th>Day</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @acts.each do |act| %>
+      <tr>
+        <td><%= act.time %></td>
+        <td><%= act.do %></td>
+        <td><img src="<%= act.see %>" width="150"></td>
+        <td><%= act.where %></td>
+        <td><%= act.day_id %></td>
+        <td>
+          <a href="/acts/<%= act.id %>" class="btn btn-primary">Show</a>
+          <a href="/acts/<%= act.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_act/<%= act.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
