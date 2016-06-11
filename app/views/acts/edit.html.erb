@@ -56,18 +56,15 @@
 
       <!-- Label and input for day_id -->
       <div class="form-group">
-        <label for="day_id" class="control-label">
-          Day
-        </label>
 
-        <input type="text" id="day_id" name="day_id" placeholder="Day" class="form-control" value="<%= @act.day_id %>">
+        <input type="hidden" id="day_id" name="day_id" placeholder="Day" class="form-control" value="<%= @act.day_id %>">
       </div>
 
       <button class="btn btn-warning">
         Update Act
       </button>
       or
-      <a href="/acts/<%= @act.id %>">Cancel</a>
+      <a href="/days/<%= @act.day_id %>">Cancel</a>
     </form>
   </div>
 </div>

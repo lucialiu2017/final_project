@@ -1,15 +1,16 @@
 <div class="page-header">
-  <h3>Day #<%= @day.id %></h3>
+  <h3>Itinerary for <%= @day.title %></h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-13">
     <table class="table table-bordered table-hover">
       <tr class="warning">
         <th>Activity Time</th>
         <th>What you'll do</th>
         <th>What you see is what you get</th>
         <th>Where it is</th>
+        <th>Actions</th>
       </tr>
 
 
@@ -19,14 +20,22 @@
     <td><%= act.time %></td>
     <td><%= act.do %></td>
     <td><img src="<%= act.see %>" width="150"></td>
-    <td><%= act.where %></td>
-  </tr>
+    <td>
+      <%= act.where %>
+    </td>
+    <td>
+    <a href="/acts/<%= act.id %>/edit" class="btn btn-warning">Edit</a>
+    <a href="/delete_act/<%= act.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+    </td>
+
+</tr>
   <% end %>
 
   <tr class="active">
-    <td colspan="4">
+    <td colspan="5">
       <h3>Add a new activity</h3>
           <form action="/create_act" method="post">
+
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -75,8 +84,6 @@
       <button class="btn btn-success">
         Create Act
       </button>
-      or
-      <a href="/days">Cancel</a>
     </form>
   </td>
     </table>

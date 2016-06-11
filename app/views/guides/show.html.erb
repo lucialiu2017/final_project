@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Tour Guide #<%= @guide.id %></h3>
+  <h3>Tour Guide: <%= @guide.name %></h3>
 </div>
 
 <div class="row">
@@ -14,9 +14,20 @@
       <dt>A Little About Me...</dt>
       <dd><%= @guide.bio %></dd>
 
-      <dt>Image url</dt>
+      <dt>Image</dt>
       <dd><img src="<%= @guide.image_url %>" height="500"></dd>
 
+      <dt>My Creations</dt>
+      <dd>
+        <ul>
+          <% @guide.days.each do |day| %>
+          <li>
+            <a href="/days/<%= day.id %>"><%= day.title %></a>
+          </li>
+
+          <% end %>
+        </ul>
+      </dd>
     </dl>
 
     <div class="btn-group btn-group-justified">

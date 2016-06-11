@@ -1,6 +1,7 @@
 class ActsController < ApplicationController
   def index
     @acts = Act.all
+
   end
 
   def show
@@ -40,7 +41,7 @@ class ActsController < ApplicationController
     @act.day_id = params[:day_id]
 
     if @act.save
-      redirect_to "/acts", :notice => "Act updated successfully."
+      redirect_to "/days", :notice => "Act updated successfully."
     else
       render 'edit'
     end
@@ -51,6 +52,6 @@ class ActsController < ApplicationController
 
     @act.destroy
 
-    redirect_to "/acts", :notice => "Act deleted."
+    redirect_to "/days", :notice => "Act deleted."
   end
 end

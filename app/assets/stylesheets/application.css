@@ -20,19 +20,22 @@
 
 body {
 font-family: 'Open Sans', sans-serif;
-  text-align: center;
 }
 
 h1, h2, h4 {
   font-family: 'Shadows Into Light', cursive;
 }
 
+.center {
+  text-align: center;
+}
 .hero {
   background:white;
   background-size: cover;
   color: gray;
   height: 500px;
   padding-top: 150px;
+  text-align: center;
 }
 /* My standard vertical spacing classes */
 

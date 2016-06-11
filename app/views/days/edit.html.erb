@@ -60,7 +60,8 @@
           Guide
         </label>
 
-        <input type="text" id="guide_id" name="guide_id" placeholder="Guide" class="form-control" value="<%= @day.guide_id %>">
+        <%= select_tag(:guide_id, options_from_collection_for_select(Guide.all, :id, :name, @day.guide_id), :class => "form-control") %>
+
       </div>
 
       <button class="btn btn-warning">
